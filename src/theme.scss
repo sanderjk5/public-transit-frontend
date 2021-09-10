@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: (
+    Main: #ffa705,
+    Light: #ffd91c,
+    Dark: #fd7c00,
+    contrast: (
+        Main: #000000,
+        Light: #000000,
+        Dark: #fff,
+    )
+);
+$my-app-primary: mat-palette($primary, Main, Light, Dark);
+$my-app-accent:  mat-palette($mat-red);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
+@include angular-material-theme($my-app-theme);

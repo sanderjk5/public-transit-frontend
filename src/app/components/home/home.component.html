@@ -1,0 +1,64 @@
+<body>
+    <div>
+      <mat-form-field appearance="fill" class="input-large-left-top">
+        <mat-label>Start</mat-label>
+        <input type="text"
+              required
+              placeholder="Start"
+              aria-label="Number"
+              matInput
+              [formControl]="controlStart"
+              [matAutocomplete]="autoStart"
+              [(ngModel)]="journeyRequestData.startStop">
+        <mat-autocomplete autoActiveFirstOption #autoStart="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptionsStart | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-large-right-top">
+        <mat-label>Target</mat-label>
+        <input type="text"
+              required
+              placeholder="Target"
+              aria-label="Number"
+              matInput
+              [formControl]="controlTarget"
+              [matAutocomplete]="autoTarget"
+              [(ngModel)]="journeyRequestData.targetStop">
+        <mat-autocomplete autoActiveFirstOption #autoTarget="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptionsTarget | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="input-large-left-bottom">
+        <mat-label>Date</mat-label>
+        <input matInput required placeholder="dd/MM/YYYY" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-small-left">
+        <mat-label>Time</mat-label>
+        <input type="text"
+              required
+              placeholder="HH:mm"
+              aria-label="Number"
+              matInput
+              [(ngModel)]="journeyRequestData.time">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-small-right">
+        <mat-label>Mode</mat-label>
+        <mat-select required [(ngModel)]="journeyRequestData.mode" name="mode">
+          <mat-option *ngFor="let mode of modi" [value]="mode">
+            {{mode}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-button appearance="fill" class="input-button" color="primary" (click)="showJourneys()">Go</button>
+    </div>
+  </body>

@@ -1,0 +1,48 @@
+/* Application-wide Styles */
+h1 {
+    color: rgb(255, 167, 5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  h2, h3 {
+    color: rgb(211, 162, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+  body {
+    margin: 2em;
+  }
+  body, input[type="text"]{
+    color: #333;
+    font-family: Cambria, Georgia, serif;
+  }
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.header-spacer {
+  flex: 1 1 auto;
+}
+.material-icons{
+  font-family: 'Material Icons' !important;
+}
+nav a {
+  font-size: 1em;
+  padding: 0.8em;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-right: 4px;
+  display: inline-block;
+  background-color: #e8e8e8;
+  color: #3d3d3d;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  color: black;
+  background-color: rgb(255, 167, 5);
+}
+nav a.active {
+  background-color: rgb(212, 138, 0);
+}

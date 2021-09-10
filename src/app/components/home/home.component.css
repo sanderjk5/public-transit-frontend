@@ -1,0 +1,42 @@
+.input-large-left-top {
+    margin-top: 60px;
+    margin-right: 18px;
+    width: 280px;
+}
+
+.input-large-left-bottom {
+    margin-top: 18px;
+    margin-right: 18px;
+    width: 280px;
+}
+
+.input-large-right-top {
+    margin-top: 60px;
+    margin-left: 18px;
+    width: 280px;
+}
+
+.input-small-left {
+    margin-top: 18px;
+    margin-left: 18px;
+    margin-right: 9px;
+    width: 131px;
+}
+
+.input-small-right {
+    margin-top: 18px;
+    margin-left: 9px;
+    width: 131px;
+}
+
+.input-button {
+    margin-top: 18px;
+    width: 280px;
+    height: 59.5px;
+    font-size: 16px;
+    background-color: rgba(0,0,0,.04);
+}
+
+body{
+    text-align: center;
+}
