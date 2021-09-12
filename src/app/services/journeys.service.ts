@@ -9,44 +9,40 @@ import {HttpClient} from '@angular/common/http';
 })
 export class JourneysService {
 
-  private journeysRequestData: JourneysRequestData|undefined;
-  private journeys: Journey[]|undefined;
-  private readonly basicUrl: string = "http://localhost:1337/journeys";
+  private journeyRequestData: JourneysRequestData|undefined;
+  private journey: Journey|undefined;
+  private readonly basicUrl: string = "http://localhost:1337/connectionScanAlgorithm";
 
   constructor(private http: HttpClient) { }
 
-  setJourneysRequestData(journeysRequestData: JourneysRequestData){
-    this.journeysRequestData = journeysRequestData;
+  setJourneyRequestData(journeysRequestData: JourneysRequestData){
+    this.journeyRequestData = journeysRequestData;
   }
 
-  getJourneysRequestData(): JourneysRequestData|undefined{
-    return this.journeysRequestData;
+  getJourneyRequestData(): JourneysRequestData|undefined{
+    return this.journeyRequestData;
   }
 
-  getJourneys(): Observable<Journey[]> {
-    return this.http.get<Journey[]>(this.getUrl());
+  getJourney() {
+    return this.journey;
   }
 
-  setJourneys(journeys: Journey[]) {
-    this.journeys = journeys;
+  getJourneyData(): Observable<Journey> {
+    return this.http.get<Journey>(this.getUrl());
   }
 
-  getJourney(id: number): Journey|undefined {
-    if(this.journeys){
-      return this.journeys.find(journey => journey.id == id);
-    } else {
-      return undefined;
-    }
+  setJourney(journey: Journey) {
+    this.journey =  journey;
   }
 
   private getUrl(): string {
     let url: string = this.basicUrl;
-    if(this.journeysRequestData){
-      url += '?startStop=' + this.journeysRequestData.startStop;
-      url += '&targetStop=' + this.journeysRequestData.targetStop;
-      url += '&date=' + this.journeysRequestData.date;
-      url += '&time=' + this.journeysRequestData.time;
-      url += '&mode=' + this.journeysRequestData.mode;
+    if(this.journeyRequestData){
+      url += '?sourceStop=' + this.journeyRequestData.sourceStop;
+      url += '&targetStop=' + this.journeyRequestData.targetStop;
+      url += '&date=' + this.journeyRequestData.date;
+      url += '&sourceTime=' + this.journeyRequestData.sourceTime + ':00';
+      //url += '&mode=' + this.journeysRequestData.mode;
     }
     return url;
   }

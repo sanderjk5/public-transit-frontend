@@ -20,11 +20,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { JourneyDetailComponent } from './components/journey-detail/journey-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    JourneyDetailComponent,
   ],
   imports: [
     BrowserModule,

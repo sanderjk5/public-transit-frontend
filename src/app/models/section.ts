@@ -1,8 +1,9 @@
 export interface Section{
-    departure: string,
-    arrival: string,
-    startStop: string,
-    targetStop: string,
+    departureTime: string,
+    arrivalTime: string,
+    duration: string,
+    departureStop: string,
+    arrivalStop: string,
     type: string,
     name?: string
 }

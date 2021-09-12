@@ -1,7 +1,7 @@
 export interface JourneysRequestData {
-    startStop: string,
+    sourceStop: string,
     targetStop: string,
     date: string,
-    time: string,
-    mode: string
+    sourceTime: string,
+    //mode: string
 }

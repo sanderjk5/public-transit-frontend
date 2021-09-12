@@ -1,0 +1,33 @@
+.sections-table {
+    margin-top: 5%;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.sections-table table{
+    width: 100%;
+}
+
+.mat-column-startStop {
+    width: 20%;
+}
+
+.mat-column-targetStop {
+    width: 20%;
+}
+
+.mat-column-departure {
+    width: 15%;
+}
+
+.mat-column-arrival {
+    width: 15%;
+}
+
+.mat-column-duration {
+    width: 15%;
+}
+
+.mat-column-transport {
+    width: 15%;
+}

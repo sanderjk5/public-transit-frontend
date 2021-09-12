@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
   filteredOptionsTarget: Observable<string[]> | undefined;
 
   journeyRequestData: JourneysRequestData = {
-    startStop: '',
+    sourceStop: '',
     targetStop: '',
-    mode: '',
+    // mode: '',
     date: '',
-    time: ''
+    sourceTime: ''
   }
 
   hours: string[] = []
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
       map(value => this._filterTarget(value))
     );
 
-    const tmpJourneyRequestData = this.journeysService.getJourneysRequestData();
+    const tmpJourneyRequestData = this.journeysService.getJourneyRequestData();
     if(tmpJourneyRequestData !== undefined){
       this.journeyRequestData = tmpJourneyRequestData;
     }
@@ -86,12 +86,19 @@ export class HomeComponent implements OnInit {
   }
 
   public showJourneys(){
-    if(this.journeyRequestData.startStop == '' || this.journeyRequestData.targetStop == '' || this.journeyRequestData.date == '' 
-    || this.journeyRequestData.time == '' || this.journeyRequestData.mode == '') {
+    if(this.journeyRequestData.sourceStop == '' || this.journeyRequestData.targetStop == '' || this.journeyRequestData.date == '' //|| this.journeyRequestData.mode == ''
+    || this.journeyRequestData.sourceTime == '') {
         this.snackBarService.openSnackBar("Please fill out all mandatory fields marked with '*'.");
     } else {
-      this.journeysService.setJourneysRequestData(this.journeyRequestData);
-      this.router.navigateByUrl('/journeys');
+      this.journeysService.setJourneyRequestData(this.journeyRequestData);
+      this.journeysService.getJourneyData().subscribe(journey => {
+        this.journeysService.setJourney(journey);
+        this.router.navigateByUrl('/journey');
+      }, error => {
+        console.log(error);
+        this.snackBarService.openSnackBar("Couldn't find a connection for this request.")
+      })
+      
     }
   }
 }

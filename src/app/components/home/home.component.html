@@ -1,15 +1,15 @@
 <body>
     <div>
       <mat-form-field appearance="fill" class="input-large-left-top">
-        <mat-label>Start</mat-label>
+        <mat-label>Source Stop</mat-label>
         <input type="text"
               required
-              placeholder="Start"
+              placeholder="Source Stop"
               aria-label="Number"
               matInput
               [formControl]="controlStart"
               [matAutocomplete]="autoStart"
-              [(ngModel)]="journeyRequestData.startStop">
+              [(ngModel)]="journeyRequestData.sourceStop">
         <mat-autocomplete autoActiveFirstOption #autoStart="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptionsStart | async" [value]="option">
             {{option}}
@@ -17,10 +17,10 @@
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field appearance="fill" class="input-large-right-top">
-        <mat-label>Target</mat-label>
+        <mat-label>Target Stop</mat-label>
         <input type="text"
               required
-              placeholder="Target"
+              placeholder="Target Stop"
               aria-label="Number"
               matInput
               [formControl]="controlTarget"
@@ -40,22 +40,14 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="input-small-left">
+      <mat-form-field appearance="fill" class="input-large-right-bottom">
         <mat-label>Time</mat-label>
         <input type="text"
               required
               placeholder="HH:mm"
               aria-label="Number"
               matInput
-              [(ngModel)]="journeyRequestData.time">
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="input-small-right">
-        <mat-label>Mode</mat-label>
-        <mat-select required [(ngModel)]="journeyRequestData.mode" name="mode">
-          <mat-option *ngFor="let mode of modi" [value]="mode">
-            {{mode}}
-          </mat-option>
-        </mat-select>
+              [(ngModel)]="journeyRequestData.sourceTime">
       </mat-form-field>
     </div>
     <div>

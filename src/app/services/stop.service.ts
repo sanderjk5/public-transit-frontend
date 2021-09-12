@@ -12,15 +12,8 @@ export class StopService {
 
   constructor(private http: HttpClient) { }
 
-  getStops(page: number, size: number): Observable<StopData> {
-    return this.http.get<StopData>(this.basicUrl + '?page=' + String(page) + '&limit=' + String(size));
-  }
-
   getMatchingStopNames(name: string, limit: number): Observable<string[]> {
     return this.http.get<string[]>(this.basicUrl + '/matchingNames?name=' + String(name) + '&limit=' + String(limit));
   }
 
-  getStop(id: string): Observable<Stop> {
-    return this.http.get<Stop>(this.basicUrl + '/stop?id=' + id);
-  }
 }
