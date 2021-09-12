@@ -53,4 +53,5 @@
     <div>
       <button mat-button appearance="fill" class="input-button" color="primary" (click)="showJourneys()">Go</button>
     </div>
+    <mat-spinner [diameter]="75" *ngIf="spinnerActive" class="spinner"></mat-spinner>
   </body>

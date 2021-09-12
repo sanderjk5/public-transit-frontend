@@ -21,6 +21,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { JourneyDetailComponent } from './components/journey-detail/journey-detail.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { JourneyDetailComponent } from './components/journey-detail/journey-deta
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}

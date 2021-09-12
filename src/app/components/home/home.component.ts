@@ -14,6 +14,7 @@ import { SnackBarService } from 'src/app/services/snack-bar.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  spinnerActive: boolean = false;
   controlStart = new FormControl();
   optionsStart: string[] = [];
   filteredOptionsStart: Observable<string[]> | undefined;
@@ -91,11 +92,13 @@ export class HomeComponent implements OnInit {
         this.snackBarService.openSnackBar("Please fill out all mandatory fields marked with '*'.");
     } else {
       this.journeysService.setJourneyRequestData(this.journeyRequestData);
+      this.spinnerActive = true;
       this.journeysService.getJourneyData().subscribe(journey => {
         this.journeysService.setJourney(journey);
+        this.spinnerActive = false;
         this.router.navigateByUrl('/journey');
       }, error => {
-        console.log(error);
+        this.spinnerActive = false;
         this.snackBarService.openSnackBar("Couldn't find a connection for this request.")
       })
       
