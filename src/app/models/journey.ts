@@ -1,11 +1,12 @@
 import { Section } from "./section";
 
 export interface Journey {
-    // id: number,
-    // departure: string,
-    // arrival: string,
-    // date: string,
-    // startStop: string,
-    // targetStop: string,
-    sections: Section[]
+    departureTime: string,
+    arrivalTime: string,
+    departureDate: string,
+    arrivalDate: string,
+    sourceStop: string,
+    targetStop: string,
+    changes?: number,
+    sections: Section[],
 }
