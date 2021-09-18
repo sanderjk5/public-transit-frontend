@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Stop} from '../models/stop';
-import { Observable, of } from 'rxjs';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { StopData } from '../models/stop-data';
+import { Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'

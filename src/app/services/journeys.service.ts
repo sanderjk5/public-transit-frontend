@@ -48,7 +48,6 @@ export class JourneysService {
       url += '&targetStop=' + this.journeyRequestData.targetStop;
       url += '&date=' + this.journeyRequestData.date;
       url += '&sourceTime=' + this.journeyRequestData.sourceTime + ':00';
-      //url += '&mode=' + this.journeysRequestData.mode;
     }
     return url;
   }

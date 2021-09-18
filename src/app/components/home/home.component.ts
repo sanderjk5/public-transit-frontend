@@ -27,13 +27,11 @@ export class HomeComponent implements OnInit {
   journeyRequestData: JourneysRequestData = {
     sourceStop: '',
     targetStop: '',
-    // mode: '',
     date: '',
     sourceTime: '',
     algorithm: ''
   }
 
-  modi: string[] = ['Departure', 'Arrival']
   algorithms: string[] = ['CSA', 'Raptor']
   
   constructor(private stopService: StopService, private journeysService: JourneysService, private router: Router, private snackBarService: SnackBarService) { }
@@ -72,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
 
   public showJourneys(){
-    if(this.journeyRequestData.sourceStop == '' || this.journeyRequestData.targetStop == '' || this.journeyRequestData.date == '' //|| this.journeyRequestData.mode == ''
+    if(this.journeyRequestData.sourceStop == '' || this.journeyRequestData.targetStop == '' || this.journeyRequestData.date == ''
     || this.journeyRequestData.sourceTime == '' || this.journeyRequestData.algorithm == '') {
         this.snackBarService.openSnackBar("Please fill out all mandatory fields marked with '*'.");
     } else {
