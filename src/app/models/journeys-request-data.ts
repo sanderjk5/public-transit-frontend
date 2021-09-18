@@ -4,5 +4,4 @@ export interface JourneysRequestData {
     date: string,
     sourceTime: string,
     algorithm: string,
-    //mode: string
 }
