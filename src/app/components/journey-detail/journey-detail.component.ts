@@ -1,5 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Journey } from 'src/app/models/journey';
 import { Section } from 'src/app/models/section';
 import { JourneysService } from 'src/app/services/journeys.service';
 
@@ -13,6 +14,15 @@ export class JourneyDetailComponent {
   displayedColumns: string[] = ['startStop', 'targetStop', 'departure', 'arrival', 'duration', 'transport'];
 
   sections: Section[] = [];
+  journey: Journey = {
+    departureTime: '',
+    arrivalTime: '',
+    sourceStop: '',
+    targetStop: '',
+    departureDate: '',
+    arrivalDate: '',
+    sections: []
+  };
 
   constructor(private journeysService: JourneysService, private route: ActivatedRoute) { }
 
@@ -21,9 +31,9 @@ export class JourneyDetailComponent {
   }
 
   private getJourney(){
-    const journey = this.journeysService.getJourney();
+    let journey = this.journeysService.getJourney();
     if(journey){
-      this.sections = journey.sections;
+      this.journey = journey;
     }
   }
 }

@@ -3,5 +3,6 @@ export interface JourneysRequestData {
     targetStop: string,
     date: string,
     sourceTime: string,
+    algorithm: string,
     //mode: string
 }

@@ -11,7 +11,7 @@ export class JourneysService {
 
   private journeyRequestData: JourneysRequestData|undefined;
   private journey: Journey|undefined;
-  private readonly basicUrl: string = "http://localhost:1337/connectionScanAlgorithm";
+  private readonly basicUrl: string = "http://localhost:1337/";
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +37,13 @@ export class JourneysService {
 
   private getUrl(): string {
     let url: string = this.basicUrl;
+    
     if(this.journeyRequestData){
+      if(this.journeyRequestData.algorithm === 'Raptor'){
+        url += 'raptorAlgorithm'
+      } else {
+        url += 'connectionScanAlgorithm'
+      }
       url += '?sourceStop=' + this.journeyRequestData.sourceStop;
       url += '&targetStop=' + this.journeyRequestData.targetStop;
       url += '&date=' + this.journeyRequestData.date;

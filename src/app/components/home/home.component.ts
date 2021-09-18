@@ -7,6 +7,7 @@ import { JourneysRequestData } from 'src/app/models/journeys-request-data';
 import { JourneysService } from 'src/app/services/journeys.service';
 import {Router} from '@angular/router';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -28,18 +29,16 @@ export class HomeComponent implements OnInit {
     targetStop: '',
     // mode: '',
     date: '',
-    sourceTime: ''
+    sourceTime: '',
+    algorithm: ''
   }
 
-  hours: string[] = []
-  minutes: string[] = []
-
   modi: string[] = ['Departure', 'Arrival']
+  algorithms: string[] = ['CSA', 'Raptor']
   
   constructor(private stopService: StopService, private journeysService: JourneysService, private router: Router, private snackBarService: SnackBarService) { }
 
   ngOnInit(): void {
-    this.initializeSelections();
     this.filteredOptionsStart = this.controlStart.valueChanges.pipe(
       startWith(''),
       map(value => this._filterStart(value))
@@ -72,23 +71,9 @@ export class HomeComponent implements OnInit {
     return this.optionsTarget.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  private initializeSelections() {
-    for(let i = 0; i < 10; i++){
-      this.minutes.push('0' + i);
-      this.hours.push('0' + i);
-    }
-    for(let i = 10; i < 24; i++){
-      this.minutes.push(i.toString());
-      this.hours.push(i.toString());
-    }
-    for(let i = 24; i < 60; i++){
-      this.minutes.push(i.toString());
-    }
-  }
-
   public showJourneys(){
     if(this.journeyRequestData.sourceStop == '' || this.journeyRequestData.targetStop == '' || this.journeyRequestData.date == '' //|| this.journeyRequestData.mode == ''
-    || this.journeyRequestData.sourceTime == '') {
+    || this.journeyRequestData.sourceTime == '' || this.journeyRequestData.algorithm == '') {
         this.snackBarService.openSnackBar("Please fill out all mandatory fields marked with '*'.");
     } else {
       this.journeysService.setJourneyRequestData(this.journeyRequestData);

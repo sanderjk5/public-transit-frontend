@@ -36,11 +36,11 @@
     <div>
       <mat-form-field appearance="fill" class="input-large-left-bottom">
         <mat-label>Date</mat-label>
-        <input matInput required placeholder="dd/MM/YYYY" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date">
+        <input matInput required placeholder="dd.MM.YYYY" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="input-large-right-bottom">
+      <mat-form-field appearance="fill" class="input-small-left">
         <mat-label>Time</mat-label>
         <input type="text"
               required
@@ -48,6 +48,14 @@
               aria-label="Number"
               matInput
               [(ngModel)]="journeyRequestData.sourceTime">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-small-right">
+        <mat-label>Algorithm</mat-label>
+        <mat-select required [(ngModel)]="journeyRequestData.algorithm" name="algorithm">
+          <mat-option *ngFor="let algorithm of algorithms" [value]="algorithm">
+            {{algorithm}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div>

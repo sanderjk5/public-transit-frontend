@@ -1,7 +1,8 @@
 .sections-table {
-    margin-top: 5%;
-    width: 80%;
+    margin-top: 3%;
+    margin-right: 10%;
     margin-left: 10%;
+    padding: 12px;
 }
 
 .sections-table table{
@@ -30,4 +31,14 @@
 
 .mat-column-transport {
     width: 15%;
+}
+
+.content {
+    padding: 12px;
+}
+
+.content > mat-card {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
