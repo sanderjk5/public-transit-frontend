@@ -37,7 +37,7 @@
         <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="16px grid">
           <mat-form-field appearance="fill" fxFlex="280px">
             <mat-label>Date</mat-label>
-            <input matInput required placeholder="dd.MM.YYYY" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date">
+            <input matInput placeholder="DD.MM.YYYY" type="text" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>

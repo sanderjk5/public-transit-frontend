@@ -11,7 +11,11 @@ export class StopService {
   constructor(private http: HttpClient) { }
 
   getMatchingStopNames(name: string, limit: number): Observable<string[]> {
-    return this.http.get<string[]>(this.basicUrl + '/matchingNames?name=' + String(name) + '&limit=' + String(limit));
+    return this.http.get<string[]>(this.basicUrl + '/matchingNames?name=' + name + '&limit=' + String(limit));
+  }
+
+  isValidStopName(name: string): Observable<boolean> {
+    return this.http.get<boolean>(this.basicUrl + '/isValidStop?name=' + name);
   }
 
 }

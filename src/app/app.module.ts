@@ -14,7 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
+import {DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -24,6 +24,7 @@ import { RouterModule } from '@angular/router';
 import { JourneyDetailComponent } from './components/journey-detail/journey-detail.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CustomDateAdapter } from './components/home/custom.date.adapter';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
+    {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
+    {provide: DateAdapter, useClass: CustomDateAdapter }
   ],
   bootstrap: [AppComponent]
 })

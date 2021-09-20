@@ -8,6 +8,8 @@ import { JourneysService } from 'src/app/services/journeys.service';
 import {Router} from '@angular/router';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { DatePipe } from '@angular/common';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +36,9 @@ export class HomeComponent implements OnInit {
 
   algorithms: string[] = ['CSA', 'Raptor']
   
-  constructor(private stopService: StopService, private journeysService: JourneysService, private router: Router, private snackBarService: SnackBarService) { }
+  constructor(private stopService: StopService, private journeysService: JourneysService, private router: Router, private snackBarService: SnackBarService, private dateAdapter: DateAdapter<Date>) {
+    this.dateAdapter.setLocale('de-DE');
+  }
 
   ngOnInit(): void {
     this.filteredOptionsStart = this.controlStart.valueChanges.pipe(
@@ -69,22 +73,59 @@ export class HomeComponent implements OnInit {
     return this.optionsTarget.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  public showJourneys(){
+  private async checkInput(): Promise<boolean>{
+    let isValidInput = true;
     if(this.journeyRequestData.sourceStop == '' || this.journeyRequestData.targetStop == '' || this.journeyRequestData.date == ''
-    || this.journeyRequestData.sourceTime == '' || this.journeyRequestData.algorithm == '') {
-        this.snackBarService.openSnackBar("Please fill out all mandatory fields marked with '*'.");
-    } else {
-      this.journeysService.setJourneyRequestData(this.journeyRequestData);
-      this.spinnerActive = true;
-      this.journeysService.getJourneyData().subscribe(journey => {
+      || this.journeyRequestData.sourceTime == '' || this.journeyRequestData.algorithm == '') {
+        isValidInput = false;
+      this.snackBarService.openSnackBar("Please fill out all mandatory fields marked with '*'.");
+      return isValidInput;
+    }
+
+    let isValidSourceStop = await this.stopService.isValidStopName(this.journeyRequestData.sourceStop).toPromise();
+
+    if(!isValidSourceStop) {
+      isValidInput = false;
+      this.snackBarService.openSnackBar("Invalid source stop.");
+      return isValidInput;
+    }
+
+    let isValidSourceTargetStop = await this.stopService.isValidStopName(this.journeyRequestData.targetStop).toPromise();
+
+    if(!isValidSourceTargetStop) {
+      isValidInput = false;
+      this.snackBarService.openSnackBar("Invalid target stop.");
+      return isValidInput;
+    }
+
+    if(!moment(this.journeyRequestData.date, 'DD.MM.YYYY', true).isValid()){
+      isValidInput = false;
+      this.snackBarService.openSnackBar("Invalid date.");
+      return isValidInput;
+    }
+
+    if(!this.journeyRequestData.sourceTime.match('^([0-1]?[0-9]|2[0-4]):([0-5][0-9])?$')) {
+      isValidInput = false;
+      this.snackBarService.openSnackBar("Invalid time.");
+      return isValidInput;
+    }
+
+    return isValidInput;
+  }
+
+  public async showJourneys(){
+    try {
+      if(await this.checkInput()) {
+        this.journeysService.setJourneyRequestData(this.journeyRequestData);
+        this.spinnerActive = true;
+        let journey = await this.journeysService.getJourneyData().toPromise();
         this.journeysService.setJourney(journey);
         this.spinnerActive = false;
         this.router.navigateByUrl('/journey');
-      }, error => {
-        this.spinnerActive = false;
-        this.snackBarService.openSnackBar("Couldn't find a connection for this request.")
-      })
-      
+      }
+    } catch (error) {
+      this.spinnerActive = false;
+      this.snackBarService.openSnackBar("Couldn't find a connection for this request.")
     }
   }
 }
