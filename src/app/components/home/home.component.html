@@ -1,65 +1,67 @@
 <body>
-    <div>
-      <mat-form-field appearance="fill" class="input-large-left-top">
-        <mat-label>Source Stop</mat-label>
-        <input type="text"
-              required
-              placeholder="Source Stop"
-              aria-label="Number"
-              matInput
-              [formControl]="controlStart"
-              [matAutocomplete]="autoStart"
-              [(ngModel)]="journeyRequestData.sourceStop">
-        <mat-autocomplete autoActiveFirstOption #autoStart="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptionsStart | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="input-large-right-top">
-        <mat-label>Target Stop</mat-label>
-        <input type="text"
-              required
-              placeholder="Target Stop"
-              aria-label="Number"
-              matInput
-              [formControl]="controlTarget"
-              [matAutocomplete]="autoTarget"
-              [(ngModel)]="journeyRequestData.targetStop">
-        <mat-autocomplete autoActiveFirstOption #autoTarget="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptionsTarget | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill" class="input-large-left-bottom">
-        <mat-label>Date</mat-label>
-        <input matInput required placeholder="dd.MM.YYYY" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="input-small-left">
-        <mat-label>Time</mat-label>
-        <input type="text"
-              required
-              placeholder="HH:mm"
-              aria-label="Number"
-              matInput
-              [(ngModel)]="journeyRequestData.sourceTime">
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="input-small-right">
-        <mat-label>Algorithm</mat-label>
-        <mat-select required [(ngModel)]="journeyRequestData.algorithm" name="algorithm">
-          <mat-option *ngFor="let algorithm of algorithms" [value]="algorithm">
-            {{algorithm}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <button mat-button appearance="fill" class="input-button" color="primary" (click)="showJourneys()">Go</button>
-    </div>
-    <mat-spinner [diameter]="75" *ngIf="spinnerActive" class="spinner"></mat-spinner>
-  </body>
+      <div class="content">
+        <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="16px grid">
+          <mat-form-field appearance="fill" fxFlex="280px">
+            <mat-label>Source Stop</mat-label>
+            <input type="text"
+                  required
+                  placeholder="Source Stop"
+                  aria-label="Number"
+                  matInput
+                  [formControl]="controlStart"
+                  [matAutocomplete]="autoStart"
+                  [(ngModel)]="journeyRequestData.sourceStop">
+            <mat-autocomplete autoActiveFirstOption #autoStart="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptionsStart | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="280px">
+            <mat-label>Target Stop</mat-label>
+            <input type="text"
+                  required
+                  placeholder="Target Stop"
+                  aria-label="Number"
+                  matInput
+                  [formControl]="controlTarget"
+                  [matAutocomplete]="autoTarget"
+                  [(ngModel)]="journeyRequestData.targetStop">
+            <mat-autocomplete autoActiveFirstOption #autoTarget="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptionsTarget | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="16px grid">
+          <mat-form-field appearance="fill" fxFlex="280px">
+            <mat-label>Date</mat-label>
+            <input matInput required placeholder="dd.MM.YYYY" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="140px">
+            <mat-label>Time</mat-label>
+            <input type="text"
+                  required
+                  placeholder="HH:mm"
+                  aria-label="Number"
+                  matInput
+                  [(ngModel)]="journeyRequestData.sourceTime">
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="140px">
+            <mat-label>Algorithm</mat-label>
+            <mat-select required [(ngModel)]="journeyRequestData.algorithm" name="algorithm">
+              <mat-option *ngFor="let algorithm of algorithms" [value]="algorithm">
+                {{algorithm}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row wrap"  fxLayoutAlign="center">
+          <button mat-button appearance="fill" fxFlex="264px" class="input-button" color="primary" (click)="showJourneys()">Go</button>
+        </div>
+      </div>
+  <mat-spinner [diameter]="75" *ngIf="spinnerActive" class="spinner"></mat-spinner>
+</body>

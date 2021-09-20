@@ -42,3 +42,7 @@
     margin-left: 10%;
     margin-right: 10%;
 }
+
+.mat-elevation-z4 {
+    min-width: 500px;
+}
