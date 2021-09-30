@@ -9,4 +9,5 @@ export interface Journey {
     targetStop: string,
     changes?: number,
     sections: Section[],
+    reliability?: string,
 }

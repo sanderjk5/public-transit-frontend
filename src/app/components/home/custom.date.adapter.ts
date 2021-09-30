@@ -12,10 +12,6 @@ export class CustomDateAdapter extends NativeDateAdapter {
       const year = Number(str[2]);
       const month = Number(str[1]) - 1;
       const date = Number(str[0]);
-        console.log(str)
-        console.log(year)
-        console.log(month)
-        console.log(date)
       return new Date(year, month, date);
     }
     const timestamp = typeof value === 'number' ? value : Date.parse(value);
@@ -24,8 +20,6 @@ export class CustomDateAdapter extends NativeDateAdapter {
 
   // retirar quando for feito o merge da data por mmalerba
   format(date: Date, displayFormat: Object): string {
-    console.log(date)
-    console.log(displayFormat)
     date = new Date(Date.UTC(
       date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(),
       date.getMinutes(), date.getSeconds(), date.getMilliseconds()));

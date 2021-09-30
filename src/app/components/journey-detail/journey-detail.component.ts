@@ -13,7 +13,6 @@ export class JourneyDetailComponent {
 
   displayedColumns: string[] = ['startStop', 'targetStop', 'departure', 'arrival', 'duration', 'transport'];
 
-  sections: Section[] = [];
   journey: Journey = {
     departureTime: '',
     arrivalTime: '',
@@ -21,6 +20,7 @@ export class JourneyDetailComponent {
     targetStop: '',
     departureDate: '',
     arrivalDate: '',
+    reliability: '',
     sections: []
   };
 
