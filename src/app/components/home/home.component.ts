@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     algorithm: ''
   }
 
-  algorithms: string[] = ['CSA', 'Raptor']
+  algorithms: string[] = ['CSA', 'CSA Profile', 'Raptor']
   
   constructor(private stopService: StopService, private journeysService: JourneysService, private router: Router, private snackBarService: SnackBarService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('de-DE');

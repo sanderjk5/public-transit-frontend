@@ -1,7 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Journey } from 'src/app/models/journey';
-import { Section } from 'src/app/models/section';
 import { JourneysService } from 'src/app/services/journeys.service';
 
 @Component({

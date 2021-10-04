@@ -41,8 +41,10 @@ export class JourneysService {
     if(this.journeyRequestData){
       if(this.journeyRequestData.algorithm === 'Raptor'){
         url += 'raptorAlgorithm'
+      } else if(this.journeyRequestData.algorithm === 'CSA') {
+        url += 'connectionScanAlgorithm/earliestArrival'
       } else {
-        url += 'connectionScanAlgorithm'
+        url += 'connectionScanAlgorithm/earliestArrivalProfile'
       }
       url += '?sourceStop=' + this.journeyRequestData.sourceStop;
       url += '&targetStop=' + this.journeyRequestData.targetStop;
