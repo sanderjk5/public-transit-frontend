@@ -1,0 +1,13 @@
+.content {
+    padding: 12px;
+}
+
+.content > mat-card {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.mat-elevation-z4 {
+    height: 400px;
+}
