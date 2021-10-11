@@ -1,9 +1,32 @@
 <div class="content">
+  <mat-card class="mat-elevation-z3">
+    <mat-card-header>
+      <mat-card-title>Connection</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="29%" fxFlex.xs="100%" fxFlex.sm="33%">
+          <p>Source:&nbsp;&nbsp;{{decisionGraph.sourceStop}}</p>
+          <p>Target:&nbsp;&nbsp;&nbsp;{{decisionGraph.targetStop}}</p>
+        </div>
+        <div fxFlex="35%" fxFlex.xs="100%" fxFlex.sm="33%">
+          <p>Departure:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{decisionGraph.departureDate}}, {{decisionGraph.departureTime}}</p>
+          <p>Minimum Expected Arrival:&nbsp;&nbsp;{{decisionGraph.meatDate}}, {{decisionGraph.meatTime}}</p>
+        </div>
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+          <p>Earliest Arrival:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{decisionGraph.eatTime}}</p>
+          <p>Earliest Safe Arrival:&nbsp;&nbsp;{{decisionGraph.esatTime}}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="graph-content">
   <mat-card class="mat-elevation-z4">
     <mat-card-header>
       <mat-card-title>Decision Graph</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="graph-mat-card-content">
       <div class="graph">
         <ngx-graph
         [showMiniMap]="true"
@@ -51,7 +74,6 @@
         <ng-template #linkTemplate let-link>
           <svg:g class="edge">
             <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
-            
           </svg:g>
         </ng-template>
         </ngx-graph>

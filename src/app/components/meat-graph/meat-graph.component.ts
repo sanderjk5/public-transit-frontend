@@ -11,6 +11,14 @@ import { JourneysService } from 'src/app/services/journeys.service';
 export class MeatGraphComponent implements OnInit {
 
   decisionGraph: DecisionGraph = {
+    sourceStop: '',
+    targetStop: '',
+    departureTime: '',
+    departureDate: '',
+    meatTime: '',
+    meatDate: '',
+    eatTime: '',
+    esatTime: '',
     nodes: [],
     links: [],
     clusters: [],
