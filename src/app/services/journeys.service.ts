@@ -3,6 +3,7 @@ import { Journey } from '../models/journey';
 import { JourneysRequestData } from '../models/journeys-request-data';
 import { Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import { DecisionGraph } from '../models/decision-graph';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class JourneysService {
 
   private journeyRequestData: JourneysRequestData|undefined;
   private journey: Journey|undefined;
+  private decisionGraph: DecisionGraph|undefined;
   private readonly basicUrl: string = "http://localhost:1337/";
 
   constructor(private http: HttpClient) { }
@@ -33,6 +35,18 @@ export class JourneysService {
 
   setJourney(journey: Journey) {
     this.journey =  journey;
+  }
+
+  getDecisionGraphData(): Observable<DecisionGraph> {
+    return this.http.get<DecisionGraph>(this.getUrl());
+  }
+
+  getDecisionGraph(){
+    return this.decisionGraph;
+  }
+
+  setDecisionGraph(decisionGraph: DecisionGraph) {
+    this.decisionGraph = decisionGraph;
   }
 
   private getUrl(): string {

@@ -4,73 +4,57 @@
       <mat-card-title>Decision Graph</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div>
+      <div class="graph">
         <ngx-graph
-        class="chart-container"
-        [view]="[950, 350]"
-        [showMiniMap]="false"
-        [draggingEnabled]="false"
+        [showMiniMap]="true"
+        [draggingEnabled]="true"
         [panningEnabled]="true"
-        [links]="[
-          {
-            id: 'a',
-            source: 'first',
-            target: 'second',
-            label: 'is parent of'
-          }, {
-            id: 'b',
-            source: 'first',
-            target: 'third',
-            label: 'custom label'
-          }, 
-          {
-            id: 'c',
-            source: 'first',
-            target: 'second',
-            label: 'is parent of'
-          }, {
-            id: 'd',
-            source: 'first',
-            target: 'third',
-            label: 'custom label'
-          }, 
-          {
-            id: 'e',
-            source: 'first',
-            target: 'second',
-            label: 'is parent of'
-          }, {
-            id: 'f',
-            source: 'first',
-            target: 'third',
-            label: 'custom label'
-          }, 
-          {
-            id: 'g',
-            source: 'first',
-            target: 'second',
-            label: 'is parent of'
-          }, {
-            id: 'h',
-            source: 'first',
-            target: 'third',
-            label: 'custom label'
-          }, 
-        ]"
-        [nodes]="[
-          {
-            id: 'first',
-            label: 'A'
-          }, {
-            id: 'second',
-            label: 'B'
-          }, {
-            id: 'third',
-            label: 'C'
-          }
-        ]"
-      >
-      </ngx-graph>
+        [links]="decisionGraph.links"
+        [nodes]="decisionGraph.nodes"
+        [clusters]="decisionGraph.clusters"
+        layout="dagreCluster"
+        >
+        <ng-template #defsTemplate>
+          <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+            <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+          </svg:marker>
+        </ng-template>
+
+        <ng-template #clusterTemplate let-cluster>
+          <svg:g class="node cluster">
+            <svg:rect
+              rx="5"
+              ry="5"
+              [attr.width]="cluster.dimension.width"
+              [attr.height]="cluster.dimension.height"
+              [attr.fill]="cluster.data.color"
+            />
+          </svg:g>
+          <svg:text alignment-baseline="top" [attr.x]="10" [attr.y]="35" font-size="2em">
+              {{cluster.label}}
+          </svg:text>
+        </ng-template>
+
+        <ng-template #nodeTemplate let-node>
+          <svg:g class="node">
+            <svg:rect
+              [attr.width]="node.dimension.width"
+              [attr.height]="node.dimension.height"
+              [attr.fill]="node.data.color"
+            />
+            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2" font-size="2em">
+              {{node.label}}
+            </svg:text>
+          </svg:g>
+        </ng-template>
+
+        <ng-template #linkTemplate let-link>
+          <svg:g class="edge">
+            <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+            
+          </svg:g>
+        </ng-template>
+        </ngx-graph>
       </div>
     </mat-card-content>
   </mat-card>
