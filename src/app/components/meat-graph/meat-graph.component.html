@@ -6,16 +6,16 @@
     <mat-card-content>
       <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div fxFlex="29%" fxFlex.xs="100%" fxFlex.sm="33%">
-          <p>Source:&nbsp;&nbsp;{{decisionGraph.sourceStop}}</p>
-          <p>Target:&nbsp;&nbsp;&nbsp;{{decisionGraph.targetStop}}</p>
+          <p>Source:&nbsp;&nbsp;{{meatResponse.sourceStop}}</p>
+          <p>Target:&nbsp;&nbsp;&nbsp;{{meatResponse.targetStop}}</p>
         </div>
         <div fxFlex="35%" fxFlex.xs="100%" fxFlex.sm="33%">
-          <p>Departure:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{decisionGraph.departureDate}}, {{decisionGraph.departureTime}}</p>
-          <p>Minimum Expected Arrival:&nbsp;&nbsp;{{decisionGraph.meatDate}}, {{decisionGraph.meatTime}}</p>
+          <p>Departure:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{meatResponse.departureDate}}, {{meatResponse.departureTime}}</p>
+          <p>Minimum Expected Arrival:&nbsp;&nbsp;{{meatResponse.meatDate}}, {{meatResponse.meatTime}}</p>
         </div>
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-          <p>Earliest Arrival:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{decisionGraph.eatTime}}</p>
-          <p>Earliest Safe Arrival:&nbsp;&nbsp;{{decisionGraph.esatTime}}</p>
+          <p>Earliest Arrival:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{meatResponse.eatTime}}</p>
+          <p>Earliest Safe Arrival:&nbsp;&nbsp;{{meatResponse.esatTime}}</p>
         </div>
       </div>
     </mat-card-content>
@@ -27,57 +27,114 @@
       <mat-card-title>Decision Graph</mat-card-title>
     </mat-card-header>
     <mat-card-content class="graph-mat-card-content">
-      <div class="graph">
-        <ngx-graph
-        [showMiniMap]="true"
-        [draggingEnabled]="false"
-        [panningEnabled]="true"
-        [links]="decisionGraph.links"
-        [nodes]="decisionGraph.nodes"
-        [clusters]="decisionGraph.clusters"
-        layout="dagreCluster"
-        >
-        <ng-template #defsTemplate>
-          <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
-            <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
-          </svg:marker>
-        </ng-template>
-
-        <ng-template #clusterTemplate let-cluster>
-          <svg:g class="node cluster">
-            <svg:rect
-              rx="5"
-              ry="5"
-              [attr.width]="cluster.dimension.width"
-              [attr.height]="cluster.dimension.height"
-              [attr.fill]="cluster.data.color"
-            />
-          </svg:g>
-          <svg:text alignment-baseline="top" [attr.x]="10" [attr.y]="35" font-size="2em">
-              {{cluster.label}}
-          </svg:text>
-        </ng-template>
-
-        <ng-template #nodeTemplate let-node>
-          <svg:g class="node">
-            <svg:rect
-              [attr.width]="node.dimension.width"
-              [attr.height]="node.dimension.height"
-              [attr.fill]="node.data.color"
-            />
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2" font-size="2em">
-              {{node.label}}
-            </svg:text>
-          </svg:g>
-        </ng-template>
-
-        <ng-template #linkTemplate let-link>
-          <svg:g class="edge">
-            <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
-          </svg:g>
-        </ng-template>
-        </ngx-graph>
-      </div>
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Compact">
+          <div class="graph">
+            <ngx-graph
+            [showMiniMap]="false"
+            [draggingEnabled]="false"
+            [panningEnabled]="true"
+            [links]="meatResponse.compactDecisionGraph.links"
+            [nodes]="meatResponse.compactDecisionGraph.nodes"
+            [clusters]="meatResponse.compactDecisionGraph.clusters"
+            layout="dagreCluster"
+            >
+            <ng-template #defsTemplate>
+              <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+                <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+              </svg:marker>
+            </ng-template>
+    
+            <ng-template #clusterTemplate let-cluster>
+              <svg:g class="node cluster">
+                <svg:rect
+                  rx="5"
+                  ry="5"
+                  [attr.width]="cluster.dimension.width"
+                  [attr.height]="cluster.dimension.height"
+                  [attr.fill]="cluster.data.color"
+                />
+              </svg:g>
+              <svg:text alignment-baseline="top" [attr.x]="10" [attr.y]="35" font-size="2em">
+                  {{cluster.label}}
+              </svg:text>
+            </ng-template>
+    
+            <ng-template #nodeTemplate let-node>
+              <svg:g class="node">
+                <svg:rect
+                  [attr.width]="node.dimension.width"
+                  [attr.height]="node.dimension.height"
+                  [attr.fill]="node.data.color"
+                />
+                <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2" font-size="2em">
+                  {{node.label}}
+                </svg:text>
+              </svg:g>
+            </ng-template>
+    
+            <ng-template #linkTemplate let-link>
+              <svg:g class="edge">
+                <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+              </svg:g>
+            </ng-template>
+            </ngx-graph>
+          </div>
+        </mat-tab>
+        <mat-tab label="Expanded">
+          <div class="graph">
+            <ngx-graph
+            [showMiniMap]="false"
+            [draggingEnabled]="false"
+            [panningEnabled]="true"
+            [links]="meatResponse.expandedDecisionGraph.links"
+            [nodes]="meatResponse.expandedDecisionGraph.nodes"
+            [clusters]="meatResponse.expandedDecisionGraph.clusters"
+            layout="dagreCluster"
+            >
+            <ng-template #defsTemplate>
+              <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+                <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+              </svg:marker>
+            </ng-template>
+    
+            <ng-template #clusterTemplate let-cluster>
+              <svg:g class="node cluster">
+                <svg:rect
+                  rx="5"
+                  ry="5"
+                  [attr.width]="cluster.dimension.width"
+                  [attr.height]="cluster.dimension.height"
+                  [attr.fill]="cluster.data.color"
+                />
+              </svg:g>
+              <svg:text alignment-baseline="top" [attr.x]="10" [attr.y]="35" font-size="2em">
+                  {{cluster.label}}
+              </svg:text>
+            </ng-template>
+    
+            <ng-template #nodeTemplate let-node>
+              <svg:g class="node">
+                <svg:rect
+                  [attr.width]="node.dimension.width"
+                  [attr.height]="node.dimension.height"
+                  [attr.fill]="node.data.color"
+                />
+                <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2" font-size="2em">
+                  {{node.label}}
+                </svg:text>
+              </svg:g>
+            </ng-template>
+    
+            <ng-template #linkTemplate let-link>
+              <svg:g class="edge">
+                <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+              </svg:g>
+            </ng-template>
+            </ngx-graph>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </mat-card-content>
   </mat-card>
 </div>

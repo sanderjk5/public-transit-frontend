@@ -19,12 +19,27 @@
     margin-right: 10%;
 }
 .mat-elevation-z4 {
-    height: 80%;
+    height: 85%;
 }
 .graph-mat-card-content {
     height: 95%;
 }
-.graph {
-    width: 100%;
+
+.mat-tab-group.mat-primary {
     height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    height: 100%;
+  
+}
+  
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+    height: 100%;
+}
+
+.graph {
+    display: grid;
+    width: 99%;
+    height: 99%;
 }

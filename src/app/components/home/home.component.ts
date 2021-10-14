@@ -119,8 +119,8 @@ export class HomeComponent implements OnInit {
         this.journeysService.setJourneyRequestData(this.journeyRequestData);
         this.spinnerActive = true;
         if(this.journeyRequestData.algorithm === 'CSA MEAT'){
-          let decisionGraph = await this.journeysService.getDecisionGraphData().toPromise();
-          this.journeysService.setDecisionGraph(decisionGraph);
+          let decisionGraph = await this.journeysService.getMeatResponseData().toPromise();
+          this.journeysService.setMeatResponse(decisionGraph);
           this.spinnerActive = false;
           this.router.navigateByUrl('/meat');
         } else {

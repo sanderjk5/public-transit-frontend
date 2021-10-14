@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DecisionGraph } from 'src/app/models/decision-graph';
 import { Link } from 'src/app/models/link';
+import { MeatResponse } from 'src/app/models/meatResponse';
 import { JourneysService } from 'src/app/services/journeys.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { JourneysService } from 'src/app/services/journeys.service';
 })
 export class MeatGraphComponent implements OnInit {
 
-  decisionGraph: DecisionGraph = {
+  meatResponse: MeatResponse = {
     sourceStop: '',
     targetStop: '',
     departureTime: '',
@@ -19,23 +20,30 @@ export class MeatGraphComponent implements OnInit {
     meatDate: '',
     eatTime: '',
     esatTime: '',
-    nodes: [],
-    links: [],
-    clusters: [],
+    expandedDecisionGraph: {
+      nodes: [],
+      links: [],
+      clusters: [],
+    },
+    compactDecisionGraph: {
+      nodes: [],
+      links: [],
+      clusters: [],
+    }
   }
   
   
   constructor(private journeysService: JourneysService) { }
 
   ngOnInit(): void {
-    this.getDecisionGraph();
+    this.getMeatResponse();
   }
 
-  private getDecisionGraph(){
-    let decisionGraph = this.journeysService.getDecisionGraph();
-    if(decisionGraph){
-      this.decisionGraph = decisionGraph;
-      console.log(this.decisionGraph)
+  private getMeatResponse(){
+    let meatResponse = this.journeysService.getMeatResponse();
+    if(meatResponse){
+      this.meatResponse = meatResponse;
+      console.log(this.meatResponse)
     }
   }
 

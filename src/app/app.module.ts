@@ -27,6 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomDateAdapter } from './components/home/custom.date.adapter';
 import { MeatGraphComponent } from './components/meat-graph/meat-graph.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
     MatCardModule,
     FlexLayoutModule,
     NgxGraphModule,
+    MatTabsModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
