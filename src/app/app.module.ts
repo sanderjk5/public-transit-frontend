@@ -25,12 +25,16 @@ import { JourneyDetailComponent } from './components/journey-detail/journey-deta
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomDateAdapter } from './components/home/custom.date.adapter';
+import { MeatGraphComponent } from './components/meat-graph/meat-graph.component';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     JourneyDetailComponent,
+    MeatGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,8 @@ import { CustomDateAdapter } from './components/home/custom.date.adapter';
     MatProgressSpinnerModule,
     MatCardModule,
     FlexLayoutModule,
+    NgxGraphModule,
+    MatTabsModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},

@@ -1,0 +1,45 @@
+.content {
+    padding: 12px;
+}
+
+.graph-content {
+    padding: 12px;
+    height: 100%;
+}
+
+.content > mat-card {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.graph-content > mat-card {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.mat-elevation-z4 {
+    height: 85%;
+}
+.graph-mat-card-content {
+    height: 95%;
+}
+
+.mat-tab-group.mat-primary {
+    height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    height: 100%;
+  
+}
+  
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+    height: 100%;
+}
+
+.graph {
+    display: grid;
+    width: 99%;
+    height: 99%;
+}
