@@ -55,10 +55,12 @@ export class JourneysService {
     
     if(this.journeyRequestData){
       if(this.journeyRequestData.algorithm === 'Raptor'){
-        url += 'raptorAlgorithm'
+        url += 'raptorAlgorithm/earliestArrival'
+      } else if(this.journeyRequestData.algorithm === 'Raptor MEAT') {
+        url += 'raptorAlgorithm/meat'
       } else if(this.journeyRequestData.algorithm === 'CSA') {
         url += 'connectionScanAlgorithm/earliestArrival'
-      } else {
+      } else if(this.journeyRequestData.algorithm === 'CSA MEAT') {
         url += 'connectionScanAlgorithm/earliestArrivalProfile'
       }
       url += '?sourceStop=' + this.journeyRequestData.sourceStop;
