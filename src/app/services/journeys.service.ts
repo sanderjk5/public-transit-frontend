@@ -56,7 +56,7 @@ export class JourneysService {
     if(this.journeyRequestData){
       if(this.journeyRequestData.algorithm === 'Raptor'){
         url += 'raptorAlgorithm/earliestArrivalTime'
-      } else if(this.journeyRequestData.algorithm === 'Raptor MEAT') {
+      } else if(this.journeyRequestData.algorithm === 'Raptor MEAT' || this.journeyRequestData.algorithm === 'Raptor MEAT TO') {
         url += 'raptorAlgorithm/minimumExpectedArrivalTime'
       } else if(this.journeyRequestData.algorithm === 'CSA') {
         url += 'connectionScanAlgorithm/earliestArrivalTime'
@@ -69,6 +69,11 @@ export class JourneysService {
       url += '&targetStop=' + this.journeyRequestData.targetStop;
       url += '&date=' + this.journeyRequestData.date;
       url += '&sourceTime=' + this.journeyRequestData.sourceTime + ':00';
+      if(this.journeyRequestData.algorithm === 'Raptor MEAT'){
+        url += '&meatDifference=' + '0';
+      } else if(this.journeyRequestData.algorithm === 'Raptor MEAT TO'){
+        url += '&meatDifference=' + '240';
+      }
     }
     return url;
   }
