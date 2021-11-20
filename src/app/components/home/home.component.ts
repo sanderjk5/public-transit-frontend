@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     algorithm: ''
   }
 
-  algorithms: string[] = ['CSA', 'CSA EAT', 'CSA MEAT', 'Raptor', 'Raptor MEAT', 'Raptor MEAT TO']
+  algorithms: string[] = ['CSA EAT', 'CSA ExpAT', 'CSA MEAT', 'Raptor EAT', 'Raptor MEAT', 'Raptor MEAT TO']
   
   constructor(private stopService: StopService, private journeysService: JourneysService, private router: Router, private snackBarService: SnackBarService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('de-DE');
@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
       if(await this.checkInput()) {
         this.journeysService.setJourneyRequestData(this.journeyRequestData);
         this.spinnerActive = true;
-        if(this.journeyRequestData.algorithm === 'CSA MEAT' || this.journeyRequestData.algorithm === 'CSA EAT' 
+        if(this.journeyRequestData.algorithm === 'CSA MEAT' || this.journeyRequestData.algorithm === 'CSA ExpAT' 
           || this.journeyRequestData.algorithm === 'Raptor MEAT' || this.journeyRequestData.algorithm === 'Raptor MEAT TO'){
           let decisionGraph = await this.journeysService.getMeatResponseData().toPromise();
           this.journeysService.setMeatResponse(decisionGraph);
