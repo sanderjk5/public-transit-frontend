@@ -1,7 +1,7 @@
 <body>
       <div class="content">
         <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="16px grid">
-          <mat-form-field appearance="fill" fxFlex="280px">
+          <mat-form-field appearance="fill" fxFlex="340px">
             <mat-label>Source Stop</mat-label>
             <input type="text"
                   required
@@ -17,7 +17,7 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="280px">
+          <mat-form-field appearance="fill" fxFlex="340px">
             <mat-label>Target Stop</mat-label>
             <input type="text"
                   required
@@ -35,13 +35,13 @@
           </mat-form-field>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="16px grid">
-          <mat-form-field appearance="fill" fxFlex="280px">
+          <mat-form-field appearance="fill" fxFlex="170px">
             <mat-label>Date</mat-label>
             <input matInput placeholder="DD.MM.YYYY" type="text" [matDatepicker]="picker" [(ngModel)]="journeyRequestData.date" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="140px">
+          <mat-form-field appearance="fill" fxFlex="170px">
             <mat-label>Time</mat-label>
             <input type="text"
                   required
@@ -50,7 +50,7 @@
                   matInput
                   [(ngModel)]="journeyRequestData.sourceTime">
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="140px">
+          <mat-form-field appearance="fill" fxFlex="340px">
             <mat-label>Algorithm</mat-label>
             <mat-select required [(ngModel)]="journeyRequestData.algorithm" name="algorithm">
               <mat-option *ngFor="let algorithm of algorithms" [value]="algorithm">
@@ -60,7 +60,7 @@
           </mat-form-field>
         </div>
         <div fxLayout="row wrap"  fxLayoutAlign="center">
-          <button mat-button appearance="fill" fxFlex="264px" class="input-button" color="primary" (click)="showJourneys()">Go</button>
+          <button mat-button appearance="fill" fxFlex="324px" class="input-button" color="primary" (click)="showJourneys()">Go</button>
         </div>
       </div>
   <mat-spinner [diameter]="75" *ngIf="spinnerActive" class="spinner"></mat-spinner>
