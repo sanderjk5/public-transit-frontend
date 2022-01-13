@@ -54,11 +54,11 @@ export class JourneysService {
     let url: string = this.basicUrl;
     
     if(this.journeyRequestData){
-      if(this.journeyRequestData.algorithm === 'Raptor EAT'){
+      if(this.journeyRequestData.algorithm === 'RAPTOR EAT'){
         url += 'raptorAlgorithm/earliestArrivalTime'
-      } else if(this.journeyRequestData.algorithm === 'Raptor MEAT') {
+      } else if(this.journeyRequestData.algorithm === 'RAPTOR MEAT') {
         url += 'raptorAlgorithm/minimumExpectedArrivalTime'
-      } else if(this.journeyRequestData.algorithm === 'Raptor MEAT TO') {
+      } else if(this.journeyRequestData.algorithm === 'RAPTOR MEAT TO') {
         url += 'raptorAlgorithm/minimumExpectedArrivalTimeTransferOptimation'
       } else if(this.journeyRequestData.algorithm === 'CSA EAT') {
         url += 'connectionScanAlgorithm/earliestArrivalTime'
