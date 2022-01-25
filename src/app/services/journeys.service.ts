@@ -3,7 +3,6 @@ import { Journey } from '../models/journey';
 import { JourneysRequestData } from '../models/journeys-request-data';
 import { Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import { DecisionGraph } from '../models/decision-graph';
 import { MeatResponse } from '../models/meatResponse';
 
 @Injectable({

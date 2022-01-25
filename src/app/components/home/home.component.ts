@@ -7,8 +7,7 @@ import { JourneysRequestData } from 'src/app/models/journeys-request-data';
 import { JourneysService } from 'src/app/services/journeys.service';
 import {Router} from '@angular/router';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
-import { DatePipe } from '@angular/common';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
 import * as moment from 'moment';
 
 @Component({

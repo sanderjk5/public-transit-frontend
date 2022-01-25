@@ -1,11 +1,8 @@
 import { NativeDateAdapter } from '@angular/material/core';
 
-
-/** Adapts the native JS Date for use with cdk-based components that work with dates. */
 export class CustomDateAdapter extends NativeDateAdapter {
 
   parse(value: any): Date | null {
-
     if ((typeof value === 'string') && (value.indexOf('.') > -1)) {
       const str = value.split('.');
 
@@ -18,7 +15,6 @@ export class CustomDateAdapter extends NativeDateAdapter {
     return isNaN(timestamp) ? null : new Date(timestamp);
   }
 
-  // retirar quando for feito o merge da data por mmalerba
   format(date: Date, displayFormat: Object): string {
     date = new Date(Date.UTC(
       date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(),
