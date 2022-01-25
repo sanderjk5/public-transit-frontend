@@ -59,13 +59,13 @@ export class JourneysService {
       } else if(this.journeyRequestData.algorithm === 'RAPTOR MEAT') {
         url += 'raptorAlgorithm/minimumExpectedArrivalTime'
       } else if(this.journeyRequestData.algorithm === 'RAPTOR MEAT TO') {
-        url += 'raptorAlgorithm/minimumExpectedArrivalTimeTransferOptimation'
+        url += 'raptorAlgorithm/minimumExpectedArrivalTimeTransferOptimisation'
       } else if(this.journeyRequestData.algorithm === 'RAPTOR MEAT TL') {
         url += 'raptorAlgorithm/minimumExpectedArrivalTimeTransferLimitation'
       } else if(this.journeyRequestData.algorithm === 'CSA EAT') {
         url += 'connectionScanAlgorithm/earliestArrivalTime'
       } else if(this.journeyRequestData.algorithm === 'CSA ExpAT') {
-        url += 'connectionScanAlgorithm/earliestArrivalTimeWithEat'
+        url += 'connectionScanAlgorithm/expectedArrivalTime'
       } else if(this.journeyRequestData.algorithm === 'CSA MEAT') {
         url += 'connectionScanAlgorithm/minimumExpectedArrivalTime'
       }
